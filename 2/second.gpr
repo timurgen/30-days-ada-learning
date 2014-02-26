@@ -1,0 +1,28 @@
+project Second is
+
+   for Source_Dirs use ("src\**");
+   for Object_Dir use "obj";
+   for Main use ("second.adb");
+
+   package Builder is
+      for Default_Switches ("ada") use ("-s", "-j8");
+   end Builder;
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-gnatVa", "-gnatw.e", "-O3", "-gnatn", "-funroll-loops", "-gnatyaAbBcCdefhiIklnoM150OprsStuxL10", "-gnato", "-fstack-check", "-gnatE", "-gnat12", "-gnatf");
+   end Compiler;
+
+   package Binder is
+      for Default_Switches ("ada") use ("-r");
+   end Binder;
+
+   package Linker is
+      for Default_Switches ("ada") use ("-s", "-Wl,--gc-sections");
+   end Linker;
+
+   package Check is
+      for Default_Switches ("ada") use ("-a");
+   end Check;
+
+end Second;
+
